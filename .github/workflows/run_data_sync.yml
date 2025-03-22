@@ -25,10 +25,10 @@ on:
 
 env:
   # please change to your own config.
-  RUN_TYPE: pass # support strava/nike/garmin/coros/garmin_cn/garmin_sync_cn_global/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/tcx_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/codoon/oppo, Please change the 'pass' it to your own
-  ATHLETE: yihong0618
-  TITLE: Yihong0618 Running
-  MIN_GRID_DISTANCE: 10 # change min distance here
+  RUN_TYPE: garmin_cn # support strava/nike/garmin/coros/garmin_cn/garmin_sync_cn_global/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/tcx_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/codoon/oppo, Please change the 'pass' it to your own
+  ATHLETE: 刘永洋
+  TITLE: TXyy2025 Running page
+  MIN_GRID_DISTANCE: 1 # change min distance here
   TITLE_GRID: Over 10km Runs # also here
 
   # IGNORE_BEFORE_SAVING: True # if you want to ignore some data before saving, set this to True
@@ -143,7 +143,7 @@ jobs:
       - name: Run sync Garmin CN script
         if: env.RUN_TYPE == 'garmin_cn'
         run: |
-          # make garimin secret string `python run_page/get_garmin_secret.py ${email} ${password} --is-cn
+          # make garimin secret string `python run_page/get_garmin_secret.py 13108162405@163.com Aa112211 --is-cn
           python run_page/garmin_sync.py ${{ secrets.GARMIN_SECRET_STRING_CN }} --is-cn
         # If you only want to sync `type running` add args --only-run, default script is to sync all data (rides and runs).
         # python run_page/garmin_sync.py ${{ secrets.GARMIN_SECRET_STRING_CN }}  --only-run --is-cn
